@@ -25,7 +25,7 @@ export async function main(ns) {
 		}
 		await checkFiles(ns, scriptInfo_Combo.name, serverNetwork[i]);
 		let tServ = ns.getServer(serverNetwork[i]);
-		let tThreads = Math.floor(tServ.maxRam - tServ.ramUsed / 2.4);
+		let tThreads = Math.floor((tServ.maxRam - tServ.ramUsed) / 2.4);
 		
 		if(tThreads > 0){
 		ns.tprint(tThreads);
