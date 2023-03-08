@@ -42,22 +42,7 @@ export async function compareHackingLevel(ns, target) {
 }
 
 /** @param {NS} ns */
-/* 
-if(!servers_Forbidden.includes(target)){
-
-}
-*/
-//{Function_Discription} sorts servers in to various arrays, used after initial scan to kick things off
-export async function sortServer(ns,target) {
-	let tRamMax = ns.getServerMaxRam(target);
-	let tRamUsed = ns.getServerUsedRam(target);
-	let tMoneyAvail = ns.getServerMoneyAvailable(target);
-	let tHackLevel = ns.getServerRequiredHackingLevel(target);
-	if(tHackLevel < ns.getServerRequiredHackingLevel('home')){
-		servers_canHackNow.push(target)
-	}
-}
-/*
+//{Function_Discription} sorts servers into arrays to be used as needed
 export async function sortServer(ns,target) {
 	let tServ = await ns.getServer(target);
 	if (tServ.ramMax > scriptInfo_Combo.size) {
