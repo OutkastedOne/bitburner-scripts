@@ -10,13 +10,13 @@ export let servers_withRam = [];
 export let toBeWritten = []; // list of files to be written to a file by the "writeToFile" function
 
 /** @param {NS} ns */
-/**@param {Function_Discription} main function does nothing in this script, other scripts use the functions and variables in this script */
+//{Function_Discription} main function does nothing in this script, other scripts use the functions and variables in this script
 export async function main(ns) {
 
 }
 
 /** @param {NS} ns */
-/**@param {Function_Discription} returns the time now in milliseconds to be used for coordination attacks */
+//{Function_Discription} returns the time now in milliseconds to be used for coordination attacks
 export async function getTime() {
 	let dt = new Date();
 	let timeNow = dt.getHours()+":"+dt.getMinutes()+":"+dt.getSeconds();
@@ -24,13 +24,13 @@ export async function getTime() {
 }
 
 /** @param {NS} ns */
-/**@param {Function_Discription} returns the players money, will add more here as needed */
+//{Function_Discription} returns the players money, will add more here as needed
 export async function playerMoney(ns) {
 	return ns.getServerMoneyAvailable('home');
 }
 
 /** @param {NS} ns */
-/**@param {Function_Discription} compares the hacking level of the target against ours and returns true if we have a higher hacking level or false if we have a lower hacking level  */
+//{Function_Discription} compares the hacking level of the target against ours and returns true if we have a higher hacking level or false if we have a lower hacking level
 export async function compareHackingLevel(ns, target) {
 	if (await ns.getHackingLevel(target) < await ns.getHackingLevel('home')) {
 		return true;
@@ -47,7 +47,7 @@ if(!servers_Forbidden.includes(target)){
 
 }
 */
-/**@param {Function_Discription} sorts servers in to various arrays, used after initial scan to kick things off */
+//{Function_Discription} sorts servers in to various arrays, used after initial scan to kick things off
 export async function sortServer(ns,target) {
 	let tRamMax = ns.getServerMaxRam(target);
 	let tRamUsed = ns.getServerUsedRam(target);
@@ -94,7 +94,7 @@ export async function sortServer(ns,target) {
 
 
 /** @param {NS} ns */
-/**@param {Function_Discription} scans the network for new servers until we have them all saved in the core/servers.js file */
+// {Function_Discription} scans the network for new servers until we have them all saved in the core/servers.js file
 export async function scanForServers(ns,toWrite) {
 	for(let initScan in serverNetwork){
 		let newScan = await ns.scan(serverNetwork[initScan]);
@@ -126,7 +126,7 @@ export async function runScript(ns,target,runType,runThreads){
 }
 
 /** @param {NS} ns */
-/**@param {Function_Discription} runs the programs required to break the servers security so we can run scripts */
+//{Function_Discription} runs the programs required to break the servers security so we can run scripts
 export async function obtainRoot(ns, target) {
 	if (ns.getServerNumPortsRequired(target) === 0) {
 		if (ns.fileExists('NUKE.exe', 'home')) {
@@ -188,7 +188,7 @@ export async function obtainRoot(ns, target) {
 }
 
 /** @param {NS} ns */
-/**@param {Function_Discription} checks if the file exists on the server and if it does not we copy it there, if it is there we overwrite it, if its running, we kill it and then overwrite it*/
+//{Function_Discription} checks if the file exists on the server and if it does not we copy it there, if it is there we overwrite it, if its running, we kill it and then overwrite it
 export async function checkFiles(ns, file, target) {
 	// check if the files we need are on the target server and if they are replace them incase they were updated\
 	if (!ns.fileExists(file, target)) {
@@ -215,7 +215,7 @@ export async function checkServersFile() {
 }
 
 /** @param {NS} ns */
-/** {Function Discription} returns an array of running scripts on the target, this includes the PID of the script */
+//{Function Discription} returns an array of running scripts on the target, this includes the PID of the script
 export async function getProcessList(target) {
 	return ns.ps(target);
 }
